@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+</style>
+
+<body>
+    <script>
+        // js语法糖指的是计算机语言添加的某种语法,这种语法对语言的功能并没有影响,但是更方便程序员使用.使用语法糖能够增加程序的可读性,从而减少程序代码出错的机会.
+        // 1. if多重条件判断
+
+        //  普通写法通常多个条件中只要有一个满足,我们会使用 || 或运算符
+
+        // let x = 'abc'; //x变量赋初始值
+        // if (x === 'abc' || x === 'def' || x === 'ghi' || x === 'jkl') {
+        //     //代码块
+        // }
+        // // 语法糖写法可以使用简洁的语法 Array.include()重写以上条件语句
+        // let y = 'abc';
+        // if (['abc', 'def', 'ghi', 'jkl'].includes(x)) {
+        //     //代码块
+        // }
+
+
+        // 2. if ...else的缩写法
+
+        // 当我们的f-else条件中的逻辑比较简单时，可以使用三元条件运算符这种简洁的写法。
+        // 普通写法
+        // let flag;
+        // let a = 20;
+        // if (a > 100) {
+        //     flag = true;
+        // } else {
+        //     flag = false;
+        // }
+        // 语法糖写法
+        // let b = 20;
+        // // 方法一
+        // let flag = b > 10 ? true : false;
+        // // 方法 二
+        // let flag = b > 10;
+
+
+        // 3、同时为多个变量赋值
+
+        // 当我们处理多个变量，并且需要对这些变 量赋不同的值，可以用s6的解构赋值实现
+        // 普通写法
+        // let test1, test2, test3;
+        // test1 = 1;
+        // test2 = 2;
+        // test3 = 3;
+        // 语法糖写法
+        // let [test1,test2,test3][1,2,3];
+
+
+        // 4、多条件的&&（与）运算符
+
+        // 如果某个变量为true时调用一个函数或返回某个值，可以使用&&运算符。常用于判断兼容问题
+        // 普通写法
+        // let test1 = true;
+        // function fn() { }
+        // //test1为直，期用fn函数
+        // if (test1) {
+        //     fn();
+        // }
+        // 语法糖写法
+        // let test1 = true;
+        // function fn() { }
+        // //test1为真，调用fn函数
+        // test1 && fn();
+
+
+        // 5、比较结果的返回
+
+        // 在return语句中，我们也可以使用 || 或运算符
+        // // 普通写法
+        // let test;
+        // function fn2() {
+        //     console.log(1);
+        // }
+        // function fn() {
+        //     if (!(test == undefined)) {
+        //         return test;
+        //     } else {
+        //         return fn2();
+        //     }
+        // }
+        // fn();
+
+        // 语法糖写法
+        // let test;
+        // function fn2() {
+        //     console, log(1);
+        // }
+        // function fn() {
+        //     return test || fn2();
+        // }
+        // fn();
+
+
+        // 6、switch对应的缩写法
+        // 我们可以把条件值保存在名值对中，基于这个条件使用名值对代替switch
+        // 普通写法
+        // function test1() { console.log("test1"); }
+        // function test2() { console.log("test2"); }
+        // function test() { console.log("test"); }
+        // var n = 1;
+        // switch (n) {
+        //     case 1:
+        //         test1();
+        //         break;
+        //     case 2:
+        //         test2()
+        //         break;
+        //     case 3:
+        //         test();
+        //         break;
+        // }
+
+        // //语法糖写法
+        // function test1() { console.log("test1"); }
+        // function test2() { console.log("test2"); }
+        // function test() { console.log("test"); }
+        // var n = 1;
+        // var data = {
+        //     1: test1,
+        //     2: test2,
+        //     3: test,
+        // };
+        // data[n] && data[n]();
+
+
+        // //7、把一个字符串重复多次
+
+        // //普通写法
+        // let test = ""
+        // for (let i = 0; i < 5; i++) {
+        //     test += "test "
+        // }
+        // console.log(str);//test test test test test
+        // //语法糖写法
+        // var str = "test ".repeat(5);
+        // console.log(str);//test test test test test
+
+
+        // //8、找出一个数组中最大和最小的值
+
+        // //普通写法
+        // var arr = [0, 1, 2, 6, 3, 6, 7, 1, 9, -1];
+        // var max = arr[0];
+        // var min = arr[0];
+        // for (let i = 0; i < arr.length; i++) {
+        //     max = max > arr[i] ? max : arr[i];
+        //     min = min < arr[i] ? min : arr[i];
+        // }
+        // console.log(max, min);
+        // //语法糖写法
+        // var arr = [0, 1, 2, 6, 3, 6, 7, 1, 9, -1]
+        // var min = Math.min(...arr);
+        // var max = Math.max(...arr);
+        // console.log(max, min);
+
+
+        // //9、数组去重
+
+        // //普通写法
+        // var arr = [1, 2, 2, 3, 6, 4, 5, 6, 7, 8, 2, 3, 4, 5, 9, 1];
+        // for (var i = 0; i < arr.length; i++) {
+        //     for (var j = i + 1; j < arr.length; j++) {
+        //         arr[i] == arr[j] & arr.splice(j, 1) && j++;
+        //     }
+        // }
+        // console.log(arr);
+        // //语法糖写法
+        // var arr = [1, 2, 8, 3, 6, 4, 5, 6, 7, 8, 2, 3, 4, 5, 9]
+        // var arr2 = [...new Set(arr)];
+        // console.log(arr2);
+
+
+        //10、查询条件缩写法
+
+        //如果我们要检查类型，并根据类型调用不同的函数，我们既可以使用多个else if语句，也可以使用switch,除此之外，还可以运用对象方式，具体如下
+        //普通写法
+        // var type = 'test1'
+        // if (type === "test1") {
+        //     test1();
+        // } else if (type === "test2") {
+        //     test2();
+        // } else if (type === "test3") {
+        //     test3();
+        // } else if (type === "test4") {
+        //     test4();
+        // } else {
+        //     test();
+        // }
+
+        //语法糖写法
+        // var type = 'test1'
+        // var types = {
+        //     test1: test1,
+        //     test2: test2,
+        //     test3: test3,
+        //     test4: test4,
+        // }
+        // var func =types[type];
+        // func ? func() : test();
+
+
+        //11、按位非和index0f缩写法
+        //我们以查找特定值为目的迭代一个数组，通常用到indexOf()方法
+        //普通写法
+        // if (arr.indexOf(item) > -1) {
+        //     //找到item
+        // }
+        // if (arr.indexOf(item) === -1) {
+        //     //没找到item
+        // }
+        // //语法糖写法
+        // if (~arr.indexOf(item)) {
+        //     //找到item
+        // }
+        // if (!~arr.indexOf(item)) {
+        //     //没找到item
+        // }
+    </script>
+</body>
+
+</html>
